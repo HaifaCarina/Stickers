@@ -1,0 +1,331 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A5F4CBED1529B38A004D6F45 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5F4CBEC1529B38A004D6F45 /* UIKit.framework */; };
+		A5F4CBEF1529B38A004D6F45 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5F4CBEE1529B38A004D6F45 /* Foundation.framework */; };
+		A5F4CBF11529B38A004D6F45 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5F4CBF01529B38A004D6F45 /* CoreGraphics.framework */; };
+		A5F4CBF31529B38A004D6F45 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5F4CBF21529B38A004D6F45 /* CoreData.framework */; };
+		A5F4CBF91529B38A004D6F45 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A5F4CBF71529B38A004D6F45 /* InfoPlist.strings */; };
+		A5F4CBFC1529B38A004D6F45 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F4CBFB1529B38A004D6F45 /* main.m */; };
+		A5F4CC021529B38A004D6F45 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5F4CC001529B38A004D6F45 /* MainWindow.xib */; };
+		A5F4CC051529B38A004D6F45 /* Stickers.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A5F4CC031529B38A004D6F45 /* Stickers.xcdatamodeld */; };
+		A5F4CC191529B3A8004D6F45 /* GlobalData.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F4CC141529B3A8004D6F45 /* GlobalData.m */; };
+		A5F4CC1A1529B3A8004D6F45 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F4CC161529B3A8004D6F45 /* RootViewController.m */; };
+		A5F4CC1B1529B3A8004D6F45 /* StickersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F4CC181529B3A8004D6F45 /* StickersViewController.m */; };
+		A5F4CC1E1529B3BA004D6F45 /* StickersAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F4CC1D1529B3BA004D6F45 /* StickersAppDelegate.m */; };
+		A5F4CC2C1529B4CB004D6F45 /* bunny.png in Resources */ = {isa = PBXBuildFile; fileRef = A5F4CC271529B4CB004D6F45 /* bunny.png */; };
+		A5F4CC2D1529B4CB004D6F45 /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = A5F4CC281529B4CB004D6F45 /* heart.png */; };
+		A5F4CC2E1529B4CB004D6F45 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = A5F4CC291529B4CB004D6F45 /* star.png */; };
+		A5F4CC2F1529B4CB004D6F45 /* patrickstar.png in Resources */ = {isa = PBXBuildFile; fileRef = A5F4CC2A1529B4CB004D6F45 /* patrickstar.png */; };
+		A5F4CC301529B4CB004D6F45 /* spongebob.png in Resources */ = {isa = PBXBuildFile; fileRef = A5F4CC2B1529B4CB004D6F45 /* spongebob.png */; };
+		A5F4CC3A1529B935004D6F45 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5F4CC391529B935004D6F45 /* QuartzCore.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A5F4CBE81529B38A004D6F45 /* Stickers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stickers.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5F4CBEC1529B38A004D6F45 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A5F4CBEE1529B38A004D6F45 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A5F4CBF01529B38A004D6F45 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A5F4CBF21529B38A004D6F45 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		A5F4CBF61529B38A004D6F45 /* Stickers-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Stickers-Info.plist"; sourceTree = "<group>"; };
+		A5F4CBF81529B38A004D6F45 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A5F4CBFA1529B38A004D6F45 /* Stickers-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Stickers-Prefix.pch"; sourceTree = "<group>"; };
+		A5F4CBFB1529B38A004D6F45 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A5F4CC011529B38A004D6F45 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		A5F4CC041529B38A004D6F45 /* Stickers.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Stickers.xcdatamodel; sourceTree = "<group>"; };
+		A5F4CC131529B3A8004D6F45 /* GlobalData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalData.h; sourceTree = "<group>"; };
+		A5F4CC141529B3A8004D6F45 /* GlobalData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalData.m; sourceTree = "<group>"; };
+		A5F4CC151529B3A8004D6F45 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		A5F4CC161529B3A8004D6F45 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		A5F4CC171529B3A8004D6F45 /* StickersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StickersViewController.h; sourceTree = "<group>"; };
+		A5F4CC181529B3A8004D6F45 /* StickersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StickersViewController.m; sourceTree = "<group>"; };
+		A5F4CC1C1529B3BA004D6F45 /* StickersAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StickersAppDelegate.h; sourceTree = "<group>"; };
+		A5F4CC1D1529B3BA004D6F45 /* StickersAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StickersAppDelegate.m; sourceTree = "<group>"; };
+		A5F4CC271529B4CB004D6F45 /* bunny.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bunny.png; sourceTree = "<group>"; };
+		A5F4CC281529B4CB004D6F45 /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = "<group>"; };
+		A5F4CC291529B4CB004D6F45 /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
+		A5F4CC2A1529B4CB004D6F45 /* patrickstar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = patrickstar.png; sourceTree = "<group>"; };
+		A5F4CC2B1529B4CB004D6F45 /* spongebob.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spongebob.png; sourceTree = "<group>"; };
+		A5F4CC391529B935004D6F45 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A5F4CBE51529B38A004D6F45 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5F4CC3A1529B935004D6F45 /* QuartzCore.framework in Frameworks */,
+				A5F4CBED1529B38A004D6F45 /* UIKit.framework in Frameworks */,
+				A5F4CBEF1529B38A004D6F45 /* Foundation.framework in Frameworks */,
+				A5F4CBF11529B38A004D6F45 /* CoreGraphics.framework in Frameworks */,
+				A5F4CBF31529B38A004D6F45 /* CoreData.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A5F4CBDD1529B38A004D6F45 = {
+			isa = PBXGroup;
+			children = (
+				A5F4CBF41529B38A004D6F45 /* Stickers */,
+				A5F4CBEB1529B38A004D6F45 /* Frameworks */,
+				A5F4CBE91529B38A004D6F45 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A5F4CBE91529B38A004D6F45 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A5F4CBE81529B38A004D6F45 /* Stickers.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A5F4CBEB1529B38A004D6F45 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A5F4CC391529B935004D6F45 /* QuartzCore.framework */,
+				A5F4CBEC1529B38A004D6F45 /* UIKit.framework */,
+				A5F4CBEE1529B38A004D6F45 /* Foundation.framework */,
+				A5F4CBF01529B38A004D6F45 /* CoreGraphics.framework */,
+				A5F4CBF21529B38A004D6F45 /* CoreData.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A5F4CBF41529B38A004D6F45 /* Stickers */ = {
+			isa = PBXGroup;
+			children = (
+				A5F4CC1C1529B3BA004D6F45 /* StickersAppDelegate.h */,
+				A5F4CC1D1529B3BA004D6F45 /* StickersAppDelegate.m */,
+				A5F4CC131529B3A8004D6F45 /* GlobalData.h */,
+				A5F4CC141529B3A8004D6F45 /* GlobalData.m */,
+				A5F4CC151529B3A8004D6F45 /* RootViewController.h */,
+				A5F4CC161529B3A8004D6F45 /* RootViewController.m */,
+				A5F4CC171529B3A8004D6F45 /* StickersViewController.h */,
+				A5F4CC181529B3A8004D6F45 /* StickersViewController.m */,
+				A5F4CC001529B38A004D6F45 /* MainWindow.xib */,
+				A5F4CC031529B38A004D6F45 /* Stickers.xcdatamodeld */,
+				A5F4CBF51529B38A004D6F45 /* Supporting Files */,
+			);
+			path = Stickers;
+			sourceTree = "<group>";
+		};
+		A5F4CBF51529B38A004D6F45 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A5F4CC271529B4CB004D6F45 /* bunny.png */,
+				A5F4CC281529B4CB004D6F45 /* heart.png */,
+				A5F4CC291529B4CB004D6F45 /* star.png */,
+				A5F4CC2A1529B4CB004D6F45 /* patrickstar.png */,
+				A5F4CC2B1529B4CB004D6F45 /* spongebob.png */,
+				A5F4CBF61529B38A004D6F45 /* Stickers-Info.plist */,
+				A5F4CBF71529B38A004D6F45 /* InfoPlist.strings */,
+				A5F4CBFA1529B38A004D6F45 /* Stickers-Prefix.pch */,
+				A5F4CBFB1529B38A004D6F45 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A5F4CBE71529B38A004D6F45 /* Stickers */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5F4CC081529B38A004D6F45 /* Build configuration list for PBXNativeTarget "Stickers" */;
+			buildPhases = (
+				A5F4CBE41529B38A004D6F45 /* Sources */,
+				A5F4CBE51529B38A004D6F45 /* Frameworks */,
+				A5F4CBE61529B38A004D6F45 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Stickers;
+			productName = Stickers;
+			productReference = A5F4CBE81529B38A004D6F45 /* Stickers.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A5F4CBDF1529B38A004D6F45 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = "NMG Resources, Inc.";
+			};
+			buildConfigurationList = A5F4CBE21529B38A004D6F45 /* Build configuration list for PBXProject "Stickers" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A5F4CBDD1529B38A004D6F45;
+			productRefGroup = A5F4CBE91529B38A004D6F45 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A5F4CBE71529B38A004D6F45 /* Stickers */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A5F4CBE61529B38A004D6F45 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5F4CBF91529B38A004D6F45 /* InfoPlist.strings in Resources */,
+				A5F4CC021529B38A004D6F45 /* MainWindow.xib in Resources */,
+				A5F4CC2C1529B4CB004D6F45 /* bunny.png in Resources */,
+				A5F4CC2D1529B4CB004D6F45 /* heart.png in Resources */,
+				A5F4CC2E1529B4CB004D6F45 /* star.png in Resources */,
+				A5F4CC2F1529B4CB004D6F45 /* patrickstar.png in Resources */,
+				A5F4CC301529B4CB004D6F45 /* spongebob.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A5F4CBE41529B38A004D6F45 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5F4CBFC1529B38A004D6F45 /* main.m in Sources */,
+				A5F4CC051529B38A004D6F45 /* Stickers.xcdatamodeld in Sources */,
+				A5F4CC191529B3A8004D6F45 /* GlobalData.m in Sources */,
+				A5F4CC1A1529B3A8004D6F45 /* RootViewController.m in Sources */,
+				A5F4CC1B1529B3A8004D6F45 /* StickersViewController.m in Sources */,
+				A5F4CC1E1529B3BA004D6F45 /* StickersAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A5F4CBF71529B38A004D6F45 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A5F4CBF81529B38A004D6F45 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A5F4CC001529B38A004D6F45 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A5F4CC011529B38A004D6F45 /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A5F4CC061529B38A004D6F45 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A5F4CC071529B38A004D6F45 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		A5F4CC091529B38A004D6F45 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Stickers/Stickers-Prefix.pch";
+				INFOPLIST_FILE = "Stickers/Stickers-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A5F4CC0A1529B38A004D6F45 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Stickers/Stickers-Prefix.pch";
+				INFOPLIST_FILE = "Stickers/Stickers-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A5F4CBE21529B38A004D6F45 /* Build configuration list for PBXProject "Stickers" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5F4CC061529B38A004D6F45 /* Debug */,
+				A5F4CC071529B38A004D6F45 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A5F4CC081529B38A004D6F45 /* Build configuration list for PBXNativeTarget "Stickers" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5F4CC091529B38A004D6F45 /* Debug */,
+				A5F4CC0A1529B38A004D6F45 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A5F4CC031529B38A004D6F45 /* Stickers.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A5F4CC041529B38A004D6F45 /* Stickers.xcdatamodel */,
+			);
+			currentVersion = A5F4CC041529B38A004D6F45 /* Stickers.xcdatamodel */;
+			path = Stickers.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = A5F4CBDF1529B38A004D6F45 /* Project object */;
+}
