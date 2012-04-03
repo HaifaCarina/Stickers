@@ -27,6 +27,7 @@
     imgView.frame = CGRectMake(0, 0, 50, 50);
     imgView.tag = stickersCount;
     stickersCount++;
+    imgView.userInteractionEnabled = YES;
     
     [contentView addSubview:imgView];
     [[GlobalData sharedGlobalData].stickersArray addObject:imgView];
@@ -196,7 +197,7 @@
     UIView *sub = [[UIView alloc]init];
     sub = contentView; //[[self subviews] objectAtIndex:0] ;
     
-    NSLog(@"Count content view subviews %d",[[sub subviews]count]);
+    //NSLog(@"Count content view subviews %d",[[sub subviews]count]);
     sub.backgroundColor = [UIColor greenColor];
     for (int i = 1; i < [[sub subviews] count]; i++ ) {
         UIImageView *aView = [[sub subviews] objectAtIndex:i];
@@ -206,21 +207,28 @@
             sticker = aView;
         }
     }
-	
-	NSArray *allTouches = [touches allObjects];
-	
-	UITouch* t;
-	if([[event allTouches] count]==1){
-		if (CGRectContainsPoint([sticker frame], [[allTouches objectAtIndex:0] locationInView:contentView])) {
-			t=[[[event allTouches] allObjects] objectAtIndex:0];
-			touch1=[t locationInView:nil];
-		}
-	}else{
-		t=[[[event allTouches] allObjects] objectAtIndex:0];
-		touch1=[t locationInView:nil];
-		t=[[[event allTouches] allObjects] objectAtIndex:1];
-		touch2=[t locationInView:nil];
-	}
+	NSLog(@"sticker tag %d", sticker.tag);
+    // If double tap remove sticker
+    if ([touch tapCount] == 2) {
+        [sticker removeFromSuperview];
+        [[GlobalData sharedGlobalData].stickersArray removeObjectIdenticalTo:sticker];
+    } else {
+    
+        NSArray *allTouches = [touches allObjects];
+        
+        UITouch* t;
+        if([[event allTouches] count]==1){
+            if (CGRectContainsPoint([sticker frame], [[allTouches objectAtIndex:0] locationInView:contentView])) {
+                t=[[[event allTouches] allObjects] objectAtIndex:0];
+                touch1=[t locationInView:nil];
+            }
+        }else{
+            t=[[[event allTouches] allObjects] objectAtIndex:0];
+            touch1=[t locationInView:nil];
+            t=[[[event allTouches] allObjects] objectAtIndex:1];
+            touch2=[t locationInView:nil];
+        }
+    }
 }
 
 -(double)distance:(CGPoint)point1 toPoint:(CGPoint)point2
@@ -297,7 +305,7 @@
 /*
 -(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     
-    /*UITouch *touch = [[event allTouches] anyObject];
+    / *UITouch *touch = [[event allTouches] anyObject];
     CGPoint location = [touch locationInView:imageScrollView];
     contentView.center = location;
     * /
