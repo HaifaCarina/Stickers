@@ -86,6 +86,7 @@
     
     UITapGestureRecognizer *singleTap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTapGestureCaptured: ) ];
     [scrollview1 addGestureRecognizer:singleTap1];
+    [singleTap1 release];
     
     UILongPressGestureRecognizer* longPressRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
     [scrollview1 addGestureRecognizer:longPressRecognizer];
