@@ -66,11 +66,10 @@
     self.navigationItem.rightBarButtonItem = doneButton;
     [doneButton release];
     
-    /*
     UIScrollView *tmpScrollView = [GlobalData sharedGlobalData].currentScrollView;
     imageScrollView = [[UIScrollView alloc]initWithFrame: CGRectMake(0, 0, tmpScrollView.frame.size.width, tmpScrollView.frame.size.height)];
     imageScrollView.delegate = self;
-    imageScrollView.scrollEnabled = NO;
+    imageScrollView.scrollEnabled = YES;
     imageScrollView.showsHorizontalScrollIndicator = YES;
     imageScrollView.showsVerticalScrollIndicator = YES;
     
@@ -89,25 +88,15 @@
     [imageScrollView setZoomScale:tmpScrollView.zoomScale animated:NO];
     [imageScrollView setContentOffset:CGPointMake(tmpScrollView.contentOffset.x , tmpScrollView.contentOffset.y)];
     
-    [imageScrollView setCenter:CGPointMake(CGRectGetMidX([self.view bounds]), CGRectGetMidY([self.view bounds])-100)];
+    [imageScrollView setCenter:CGPointMake(CGRectGetMidX([self.view bounds]), CGRectGetMidY([self.view bounds])-20)];
     
-    [self.view  addSubview:imageScrollView];
-    */
+    
+    //[self.view  addSubview:imageScrollView];
+    
+    
     
     UIScrollView *scrollview1 = [[UIScrollView alloc]init];
-    scrollview1 = [GlobalData sharedGlobalData].currentScrollView;
-    
-    UIView *sub = [[UIView alloc]init];
-    sub = [[scrollview1 subviews] objectAtIndex:0] ;
-    
-    NSLog(@"Count content view subviews %d",[[sub subviews]count]);
-    
-    for (int i = 1; i < [[sub subviews] count]; i++ ) {
-        UIView *aView = [[sub subviews] objectAtIndex:i];
-        [aView removeFromSuperview];
-        NSLog(@"remove %d", i);
-    }
-    
+    scrollview1 = imageScrollView;//[GlobalData sharedGlobalData].currentScrollView;
     
     
     CGSize pageSize1 = scrollview1.frame.size;
@@ -127,12 +116,15 @@
     [contentView setCenter:CGPointMake(CGRectGetMidX([self.view bounds]), CGRectGetMidY([self.view bounds])-100)];
     contentView.backgroundColor = [UIColor greenColor];
     [contentView addSubview:photoView1];
+    //[contentView sendSubviewToBack: photoView1];
     
     for (UIImageView *s in [GlobalData sharedGlobalData].stickersArray) {
-        s.frame = CGRectMake(s.frame.origin.x, s.frame.origin.y, s.frame.size.width, s.frame.size.height);
         [contentView addSubview:s];
-        [s release];
+        NSLog(@"add sticker ok?");
+        NSLog(@"add sticker ok? Frame %f, %f, %f, %f", s.frame.origin.x, s.frame.origin.y, s.frame.size.width, s.frame.size.height);
+        
     }
+    
     
     
     [self.view addSubview:contentView];
@@ -335,6 +327,20 @@
     NSLog(@"touched!");
 }
 */
+
+#pragma mark -
+#pragma mark UIScrollView Delegate
+
+- (UIView*)viewForZoomingInScrollView:(UIScrollView *)aScrollView {
+    NSLog(@"PhotoEditView Zoom");
+    
+    return contentView;
+}
+- (void)scrollViewDidEndZooming:(UIScrollView *)zoomedScrollView withView:(UIView *)view atScale:(float)scale
+{
+    NSLog(@"view scale %f", scale);
+    
+}
 - (void) dealloc {
     [super dealloc];
 }

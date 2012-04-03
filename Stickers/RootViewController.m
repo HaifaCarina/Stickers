@@ -17,7 +17,7 @@
     [GlobalData sharedGlobalData].currentPhotoView = [GlobalData sharedGlobalData].photoView1;
     [GlobalData sharedGlobalData].currentScrollView = scrollview1;
     [GlobalData sharedGlobalData].currentPhotoTag = 1;
-    
+    NSLog(@"zoomscale %f", scrollview1.zoomScale);
     StickersViewController *aController = [[StickersViewController alloc]init];
     [self.navigationController  pushViewController:aController animated:YES];
     [aController release];
@@ -38,14 +38,14 @@
         UIScrollView *tmpScrollView = [GlobalData sharedGlobalData].currentScrollView;
         [contentView1 removeFromSuperview];
         [contentView1 addSubview:[GlobalData sharedGlobalData].currentPhotoView];
-        [contentView1 sendSubviewToBack:[GlobalData sharedGlobalData].currentPhotoView];
         
-        for (UIImageView *s in [GlobalData sharedGlobalData].stickersArray) {
-            NSLog(@"Frame %f, %f, %f, %f", s.frame.origin.x, s.frame.origin.y, s.frame.size.width, s.frame.size.height);
+        for (UIImageView *h in [GlobalData sharedGlobalData].stickersArray) {
+            NSLog(@"Frame %f, %f, %f, %f", h.frame.origin.x, h.frame.origin.y, h.frame.size.width, h.frame.size.height);
             
-            s.frame = CGRectMake((s.frame.origin.x + tmpScrollView.contentOffset.x) / tmpScrollView.zoomScale , (s.frame.origin.y + tmpScrollView.contentOffset.y ) / tmpScrollView.zoomScale , s.frame.size.width / tmpScrollView.zoomScale, s.frame.size.height / tmpScrollView.zoomScale);
+            UIImageView *s = [[UIImageView alloc]initWithImage: h.image];
+            s.frame = CGRectMake((h.frame.origin.x + tmpScrollView.contentOffset.x) / tmpScrollView.zoomScale , (h.frame.origin.y + tmpScrollView.contentOffset.y ) / tmpScrollView.zoomScale , h.frame.size.width / tmpScrollView.zoomScale, h.frame.size.height / tmpScrollView.zoomScale);
             NSLog(@"Updated Frame %f, %f, %f, %f", s.frame.origin.x, s.frame.origin.y, s.frame.size.width, s.frame.size.height);
-            
+            NSLog(@"Frame H %f, %f, %f, %f", h.frame.origin.x, h.frame.origin.y, h.frame.size.width, h.frame.size.height);
             [contentView1 addSubview:s];
             [s release];
         }

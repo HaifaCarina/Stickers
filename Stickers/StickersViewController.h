@@ -10,7 +10,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "GlobalData.h"
 
-@interface StickersViewController : UIViewController {
+@interface StickersViewController : UIViewController <UIScrollViewDelegate>{
     UIScrollView *imageScrollView;
     UIImage *image;
     UIView *contentView;    
