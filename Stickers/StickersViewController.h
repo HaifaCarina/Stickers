@@ -29,6 +29,9 @@
     CGPoint touch2;
     
     UIImageView *sticker;
+    
+    float angle;
+    float rotation;
 }
 
 @end

@@ -28,6 +28,7 @@
     imgView.tag = stickersCount;
     stickersCount++;
     imgView.userInteractionEnabled = YES;
+    imgView.backgroundColor = [UIColor purpleColor];
     
     [contentView addSubview:imgView];
     [[GlobalData sharedGlobalData].stickersArray addObject:imgView];
@@ -171,9 +172,16 @@
     [effectsScrollView addSubview:stickerView4];
     [stickerView4 release];
     
+    // Let's try animating 04/04/2012
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:2.0];
+    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft
+                           forView:effectsScrollView
+                             cache:YES];
+    
     [self.view addSubview:effectsScrollView];
     [self.view sendSubviewToBack:effectsScrollView];
-    
+    //[UIView commitAnimations];
     [effectsScrollView release];
 
     
@@ -196,7 +204,7 @@
     
     
     
-	NSLog(@"sticker tag %d", sticker.tag);
+	//NSLog(@"sticker tag %d", sticker.tag);
     // If triple tap remove sticker
     if ([touch tapCount] == 3) {
         NSLog(@"remove sticker");
@@ -238,7 +246,7 @@
 	NSArray *allTouches = [touches allObjects];
 	UITouch* t;
 	float scale = 1;
-    //float rotation;
+    rotation = 0;
 	
 	if([[event allTouches] count]==1){
 		t=[[[event allTouches] allObjects] objectAtIndex:0];
@@ -268,15 +276,17 @@
 			scale =distance1 / distance2;
         }
         
-		//rotation=atan2(currentTouch2.y-currentTouch1.y, currentTouch2.x-currentTouch1.x)-atan2(touch2.y-touch1.y,touch2.x-touch1.x);
+		rotation = atan2(currentTouch2.y-currentTouch1.y, currentTouch2.x-currentTouch1.x)-atan2(touch2.y-touch1.y,touch2.x-touch1.x);
+        rotation = angle - rotation; 
+        
 		if(isnan(scale)){
 			scale=1.0f;
 		}
-		//NSLog(@"rotation %f",rotation);
+		NSLog(@"rotation %f",rotation);
 		
-		NSLog(@"scale %f",scale);
+		//NSLog(@"scale %f",scale);
 		sticker.transform=CGAffineTransformScale(sticker.transform, scale,scale);
-        
+        sticker.transform=CGAffineTransformRotate(sticker.transform, -rotation);
         
 		/*if (CGRectContainsPoint([sticker frame], [[allTouches objectAtIndex:0] locationInView:contentView]))
 		{
@@ -291,11 +301,15 @@
 			//sticker.transform=CGAffineTransformRotate(sticker.transform, rotation);
 		}
 		*/
+        
 		touch1=currentTouch1;
 		touch2=currentTouch2;
 	}
 }
-
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    angle = rotation;
+    NSLog(@"touch ended with angle %f", angle);
+}
 
 /*
 -(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
