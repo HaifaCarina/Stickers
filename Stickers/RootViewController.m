@@ -36,6 +36,9 @@
     if ([GlobalData sharedGlobalData].fromEffectsTag == 1) {
         
         UIScrollView *tmpScrollView = [GlobalData sharedGlobalData].currentScrollView;
+        for (UIView *view in contentView1.subviews) {
+            [view removeFromSuperview];
+        }
         [contentView1 removeFromSuperview];
         [contentView1 addSubview:[GlobalData sharedGlobalData].currentPhotoView];
         
@@ -43,10 +46,14 @@
             NSLog(@"Frame %f, %f, %f, %f", h.frame.origin.x, h.frame.origin.y, h.frame.size.width, h.frame.size.height);
             
             UIImageView *s = [[UIImageView alloc]initWithImage: h.image];
+            
             s.frame = CGRectMake((h.frame.origin.x + tmpScrollView.contentOffset.x) / tmpScrollView.zoomScale , (h.frame.origin.y + tmpScrollView.contentOffset.y ) / tmpScrollView.zoomScale , h.frame.size.width / tmpScrollView.zoomScale, h.frame.size.height / tmpScrollView.zoomScale);
             NSLog(@"Updated Frame %f, %f, %f, %f", s.frame.origin.x, s.frame.origin.y, s.frame.size.width, s.frame.size.height);
             NSLog(@"Frame H %f, %f, %f, %f", h.frame.origin.x, h.frame.origin.y, h.frame.size.width, h.frame.size.height);
+            s.transform=CGAffineTransformRotate(s.transform, atan2(h.transform.b, h.transform.a));
             [contentView1 addSubview:s];
+            
+            NSLog(@"angle viewwillappear %f", atan2(h.transform.b, h.transform.a));
             [s release];
         }
         [scrollview1 addSubview:contentView1];

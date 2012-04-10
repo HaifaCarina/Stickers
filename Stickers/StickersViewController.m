@@ -19,6 +19,8 @@
     
     for (UIImageView *s in [GlobalData sharedGlobalData].stickersArray) {
         NSLog(@"Frame %f, %f, %f, %f", s.frame.origin.x, s.frame.origin.y, s.frame.size.width, s.frame.size.height);
+        NSLog(@"Bounds %f, %f, %f, %f", s.bounds.origin.x, s.bounds.origin.y, s.bounds.size.width, s.bounds.size.height);
+        NSLog(@"angle review %f", atan2(s.transform.b, s.transform.a));
     }
 }
 
@@ -173,15 +175,17 @@
     [stickerView4 release];
     
     // Let's try animating 04/04/2012
+    /*
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:2.0];
     [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft
                            forView:effectsScrollView
                              cache:YES];
-    
+    */
     [self.view addSubview:effectsScrollView];
     [self.view sendSubviewToBack:effectsScrollView];
-    //[UIView commitAnimations];
+    
+     //[UIView commitAnimations];
     [effectsScrollView release];
 
     
@@ -192,7 +196,7 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     
     UITouch *touch = [[event allTouches] anyObject];
-    
+        
     contentView.backgroundColor = [UIColor greenColor];
     for (int i = 1; i < [[contentView subviews] count]; i++ ) {
         UIImageView *aView = [[contentView subviews] objectAtIndex:i];
@@ -277,7 +281,7 @@
         }
         
 		rotation = atan2(currentTouch2.y-currentTouch1.y, currentTouch2.x-currentTouch1.x)-atan2(touch2.y-touch1.y,touch2.x-touch1.x);
-        rotation = angle - rotation; 
+        //rotation = angle - rotation; 
         
 		if(isnan(scale)){
 			scale=1.0f;
@@ -286,7 +290,7 @@
 		
 		//NSLog(@"scale %f",scale);
 		sticker.transform=CGAffineTransformScale(sticker.transform, scale,scale);
-        sticker.transform=CGAffineTransformRotate(sticker.transform, -rotation);
+        sticker.transform=CGAffineTransformRotate(sticker.transform, rotation);
         
 		/*if (CGRectContainsPoint([sticker frame], [[allTouches objectAtIndex:0] locationInView:contentView]))
 		{
@@ -307,7 +311,8 @@
 	}
 }
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    angle = rotation;
+    //angle = rotation;
+    angle = atan2(sticker.transform.b, sticker.transform.a);
     NSLog(@"touch ended with angle %f", angle);
 }
 
