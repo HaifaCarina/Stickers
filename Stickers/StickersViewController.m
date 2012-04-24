@@ -11,52 +11,9 @@
 
 @implementation StickersViewController
 
-- (void) doneAction {
-    NSLog(@"done!");
-    [GlobalData sharedGlobalData].fromEffectsTag = 1;
-    //[GlobalData sharedGlobalData].currentScrollView = imageScrollView;
-    NSLog(@"stickers count %d",[[GlobalData sharedGlobalData].stickersArray count]);
-    
-    for (UIImageView *s in [GlobalData sharedGlobalData].stickersArray) {
-        NSLog(@"Frame %f, %f, %f, %f", s.frame.origin.x, s.frame.origin.y, s.frame.size.width, s.frame.size.height);
-        NSLog(@"Bounds %f, %f, %f, %f", s.bounds.origin.x, s.bounds.origin.y, s.bounds.size.width, s.bounds.size.height);
-        NSLog(@"angle review %f", atan2(s.transform.b, s.transform.a));
-    }
-}
 
-- (void) addSticker: (UIImage *)img{
-    UIImageView *imgView = [[UIImageView alloc]initWithImage:img];
-    imgView.frame = CGRectMake(0, 0, 50, 50);
-    imgView.tag = stickersCount;
-    stickersCount++;
-    imgView.userInteractionEnabled = YES;
-    imgView.backgroundColor = [UIColor purpleColor];
-    
-    [contentView addSubview:imgView];
-    [[GlobalData sharedGlobalData].stickersArray addObject:imgView];
-    [imgView release];
-    
-}
-- (void) singleTapGestureCaptured: (UITapGestureRecognizer *) recognizer {
-    NSLog(@"%d",[recognizer view].tag);
-    
-    switch ([recognizer view].tag) {
-        case 1: 
-            [self addSticker:sticker1];
-            break;
-        case 2: 
-            [self addSticker:sticker2];
-            break;
-        case 3: 
-            [self addSticker:sticker3];
-            break;
-        case 4: 
-            [self addSticker:sticker4];
-            break;
-            
-    }
-    
-}
+#pragma mark -
+#pragma mark Life Cycle Methods
 - (void) loadView {
     [super loadView];
     
@@ -100,7 +57,7 @@
     CGContextTranslateCTM(resizedContext1, -imageScrollView.contentOffset.x, -imageScrollView.contentOffset.y);
     [imageScrollView.layer renderInContext:resizedContext1];
     UIImage *p1 = UIGraphicsGetImageFromCurrentImageContext();
-    NSLog(@"GENERATED IMAGE W-H %3.0f, %3.0f", p1.size.width,p1.size.height);
+    
     UIGraphicsEndImageContext();
     [imageScrollView release];
     
@@ -116,12 +73,7 @@
     
     for (UIImageView *s in [GlobalData sharedGlobalData].stickersArray) {
         [contentView addSubview:s];
-        NSLog(@"add sticker ok?");
-        NSLog(@"add sticker ok? Frame %f, %f, %f, %f", s.frame.origin.x, s.frame.origin.y, s.frame.size.width, s.frame.size.height);
-        
     }
-    
-    
     
     [self.view addSubview:contentView];
     
@@ -174,23 +126,51 @@
     [effectsScrollView addSubview:stickerView4];
     [stickerView4 release];
     
-    // Let's try animating 04/04/2012
-    /*
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:2.0];
-    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft
-                           forView:effectsScrollView
-                             cache:YES];
-    */
     [self.view addSubview:effectsScrollView];
     [self.view sendSubviewToBack:effectsScrollView];
     
-     //[UIView commitAnimations];
-    [effectsScrollView release];
-
-    
+    [effectsScrollView release];    
 }
 
+#pragma mark -
+#pragma mark Custom Methods
+- (void) doneAction {
+    NSLog(@"done!");
+    [GlobalData sharedGlobalData].fromEffectsTag = 1;
+}
+
+- (void) addSticker: (UIImage *)img{
+    UIImageView *imgView = [[UIImageView alloc]initWithImage:img];
+    imgView.frame = CGRectMake(0, 0, 50, 50);
+    imgView.tag = stickersCount;
+    stickersCount++;
+    imgView.userInteractionEnabled = YES;
+    
+    [contentView addSubview:imgView];
+    [[GlobalData sharedGlobalData].stickersArray addObject:imgView];
+    [imgView release];
+    
+}
+- (void) singleTapGestureCaptured: (UITapGestureRecognizer *) recognizer {
+    NSLog(@"%d",[recognizer view].tag);
+    
+    switch ([recognizer view].tag) {
+        case 1: 
+            [self addSticker:sticker1];
+            break;
+        case 2: 
+            [self addSticker:sticker2];
+            break;
+        case 3: 
+            [self addSticker:sticker3];
+            break;
+        case 4: 
+            [self addSticker:sticker4];
+            break;
+            
+    }
+    
+}
 #pragma mark -
 #pragma mark Touches & Moves Delegate
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -206,9 +186,6 @@
         }
     }
     
-    
-    
-	//NSLog(@"sticker tag %d", sticker.tag);
     // If triple tap remove sticker
     if ([touch tapCount] == 3) {
         NSLog(@"remove sticker");
@@ -286,32 +263,16 @@
 		if(isnan(scale)){
 			scale=1.0f;
 		}
-		NSLog(@"rotation %f",rotation);
 		
-		//NSLog(@"scale %f",scale);
-		sticker.transform=CGAffineTransformScale(sticker.transform, scale,scale);
+        sticker.transform=CGAffineTransformScale(sticker.transform, scale,scale);
         sticker.transform=CGAffineTransformRotate(sticker.transform, rotation);
-        
-		/*if (CGRectContainsPoint([sticker frame], [[allTouches objectAtIndex:0] locationInView:contentView]))
-		{
-			
-			sticker.transform=CGAffineTransformScale(sticker.transform, scale,scale);
-            //sticker.transform=CGAffineTransformRotate(sticker.transform, rotation);
-			
-		}
-		else // In case of scaling or rotating the background imageView
-		{
-			sticker.transform=CGAffineTransformScale(sticker.transform, scale,scale);
-			//sticker.transform=CGAffineTransformRotate(sticker.transform, rotation);
-		}
-		*/
         
 		touch1=currentTouch1;
 		touch2=currentTouch2;
 	}
 }
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    //angle = rotation;
+    
     angle = atan2(sticker.transform.b, sticker.transform.a);
     NSLog(@"touch ended with angle %f", angle);
 }

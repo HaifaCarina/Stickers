@@ -12,27 +12,9 @@
 @implementation RootViewController
 @synthesize contentView1;
 
-- (void) singleTapGestureCaptured : (id) sender {
-    NSLog(@"singletap");
-    [GlobalData sharedGlobalData].currentPhotoView = [GlobalData sharedGlobalData].photoView1;
-    [GlobalData sharedGlobalData].currentScrollView = scrollview1;
-    [GlobalData sharedGlobalData].currentPhotoTag = 1;
-    NSLog(@"zoomscale %f", scrollview1.zoomScale);
-    StickersViewController *aController = [[StickersViewController alloc]init];
-    [self.navigationController  pushViewController:aController animated:YES];
-    [aController release];
-}
-- (void) handleLongPress: (UILongPressGestureRecognizer *) recognizer {
-    NSLog(@"long press");
-    
-    [self presentModalViewController:imgPicker animated:YES];
-    
-}
-
+#pragma mark -
+#pragma mark Life Cycle Methods
 - (void) viewWillAppear:(BOOL)animated {
-    
-    
-    
     if ([GlobalData sharedGlobalData].fromEffectsTag == 1) {
         
         UIScrollView *tmpScrollView = [GlobalData sharedGlobalData].currentScrollView;
@@ -43,17 +25,12 @@
         [contentView1 addSubview:[GlobalData sharedGlobalData].currentPhotoView];
         
         for (UIImageView *h in [GlobalData sharedGlobalData].stickersArray) {
-            NSLog(@"Frame %f, %f, %f, %f", h.frame.origin.x, h.frame.origin.y, h.frame.size.width, h.frame.size.height);
             
             UIImageView *s = [[UIImageView alloc]initWithImage: h.image];
             
             s.frame = CGRectMake((h.frame.origin.x + tmpScrollView.contentOffset.x) / tmpScrollView.zoomScale , (h.frame.origin.y + tmpScrollView.contentOffset.y ) / tmpScrollView.zoomScale , h.frame.size.width / tmpScrollView.zoomScale, h.frame.size.height / tmpScrollView.zoomScale);
-            NSLog(@"Updated Frame %f, %f, %f, %f", s.frame.origin.x, s.frame.origin.y, s.frame.size.width, s.frame.size.height);
-            NSLog(@"Frame H %f, %f, %f, %f", h.frame.origin.x, h.frame.origin.y, h.frame.size.width, h.frame.size.height);
             s.transform=CGAffineTransformRotate(s.transform, atan2(h.transform.b, h.transform.a));
             [contentView1 addSubview:s];
-            
-            NSLog(@"angle viewwillappear %f", atan2(h.transform.b, h.transform.a));
             [s release];
         }
         [scrollview1 addSubview:contentView1];
@@ -66,6 +43,7 @@
         
         [GlobalData sharedGlobalData].fromEffectsTag = 0;
     } else {
+        NSLog(@"not from DONE effects");
         [contentView1 removeFromSuperview];
         [contentView1 addSubview:[GlobalData sharedGlobalData].photoView1];
         [scrollview1 addSubview:contentView1];
@@ -105,9 +83,23 @@
     imgPicker.delegate = self;
     imgPicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     
+}
+#pragma mark -
+#pragma mark Custom Methods
+- (void) singleTapGestureCaptured : (id) sender {
+    
+    [GlobalData sharedGlobalData].currentPhotoView = [GlobalData sharedGlobalData].photoView1;
+    [GlobalData sharedGlobalData].currentScrollView = scrollview1;
+    [GlobalData sharedGlobalData].currentPhotoTag = 1;
+    
+    StickersViewController *aController = [[StickersViewController alloc]init];
+    [self.navigationController  pushViewController:aController animated:YES];
+    [aController release];
+}
+- (void) handleLongPress: (UILongPressGestureRecognizer *) recognizer {
+    [self presentModalViewController:imgPicker animated:YES];
     
 }
-
 #pragma mark -
 #pragma mark UIImagePickerControllerDelegate
 
@@ -128,14 +120,12 @@
     
 }
 - (UIView*)viewForZoomingInScrollView:(UIScrollView *)aScrollView {
-    NSLog(@"it is zoooooooooming");
     return contentView1;
-    //return [GlobalData sharedGlobalData].photoView1;
 }
+
 - (void)scrollViewDidEndZooming:(UIScrollView *)zoomedScrollView withView:(UIView *)view atScale:(float)scale
 {
-    NSLog(@"view scale %f", scale);
-    
+    NSLog(@"view scale %f", scale);    
 }
 
 @end
